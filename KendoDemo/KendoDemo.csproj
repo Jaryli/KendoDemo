@@ -169,6 +169,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\DemoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KendoController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
@@ -206,9 +207,11 @@
     <Content Include="Content\Images\App\loading.gif" />
     <Content Include="Content\Images\App\setting.png" />
     <Content Include="Content\Images\App\twitter.png" />
+    <Content Include="Content\Images\forecast.png" />
     <Content Include="Content\Images\menu.png" />
     <Content Include="Content\Images\sub-menu.png" />
     <Content Include="Content\Images\success-bg.png" />
+    <Content Include="Content\Images\weather.png" />
     <Content Include="Content\Kendo\16x16\Chart.png" />
     <Content Include="Content\Kendo\16x16\ComboBox.png" />
     <Content Include="Content\Kendo\16x16\Grid.png" />

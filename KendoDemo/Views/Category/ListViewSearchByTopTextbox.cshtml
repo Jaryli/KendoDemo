@@ -4,7 +4,6 @@
     ViewBag.Title = "ListView Search By Top Textbox";
 }
 <h2>Category List: ListView Search By Top Textbox</h2>
-
 <div id="catListSearchZone">
     <label>Search: </label>
     <input type="text" id="txtSearch" name="txtSearch" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -22,11 +21,10 @@
            ).Pageable(pager => pager.Enabled(true).Info(false)))
 </div>
 <br />
-
 <script type="text/x-kendo-tmpl" id="CategoryProductTmpl">
     <div class="row">
         <div class="row-col-20">
-                <strong>Category: </strong>
+            <strong>Category: </strong>
         </div>
         <div class="row-col-40">
             ${ (CategoryId == null) ? ' ' : CategoryId}
@@ -42,27 +40,26 @@
             </div>
         </div>
         #for (var i=0, l = ProductViewModels.length; i < l; i++){#
-            <div class="row">
-                <div class="row-col-20">
-                    ${ (ProductViewModels[i].ProductId == null) ? ' ' : ProductViewModels[i].ProductId}
-                </div>
-                <div class="row-col-20">
-                    ${ (ProductViewModels[i].ProductName == null) ? ' ' : ProductViewModels[i].ProductName}
-                </div>
-                <div class="row-col-20">
-                    ${ (ProductViewModels[i].ProductPrice == null) ? ' ' : ProductViewModels[i].ProductPrice}
-                </div>
-                <div class="row-col-20">
-                    ${ (ProductViewModels[i].CategoryId == null) ? ' ' : ProductViewModels[i].CategoryId}
-                </div>
-                <div class="row-col-20">
-                    ${ (ProductViewModels[i].CategoryName == null) ? ' ' : ProductViewModels[i].CategoryName}
-                </div>
+        <div class="row">
+            <div class="row-col-20">
+                ${ (ProductViewModels[i].ProductId == null) ? ' ' : ProductViewModels[i].ProductId}
             </div>
+            <div class="row-col-20">
+                ${ (ProductViewModels[i].ProductName == null) ? ' ' : ProductViewModels[i].ProductName}
+            </div>
+            <div class="row-col-20">
+                ${ (ProductViewModels[i].ProductPrice == null) ? ' ' : ProductViewModels[i].ProductPrice}
+            </div>
+            <div class="row-col-20">
+                ${ (ProductViewModels[i].CategoryId == null) ? ' ' : ProductViewModels[i].CategoryId}
+            </div>
+            <div class="row-col-20">
+                ${ (ProductViewModels[i].CategoryName == null) ? ' ' : ProductViewModels[i].CategoryName}
+            </div>
+        </div>
         # } #
 
     </div>
-
 </script>
 <script type="text/javascript">
 

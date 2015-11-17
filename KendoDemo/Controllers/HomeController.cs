@@ -15,6 +15,20 @@ namespace KendoDemo.Controllers
 
         public ActionResult Demo()
         {
+            ViewBag.slist = new List<SelectListItem>() {
+              new SelectListItem() {
+                Text = "纯棉", Value = "1"
+              },
+              new SelectListItem() {
+                Text = "亚麻", Value = "2"
+              },
+              new SelectListItem() {
+                Text = "丝绸", Value = "3"
+              },
+              new SelectListItem() {
+                Text = "lanbu", Value = "4"
+              }
+          };
             return View();
         }
     }

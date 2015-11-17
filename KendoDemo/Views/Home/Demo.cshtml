@@ -2,7 +2,226 @@
 @{
     ViewBag.Title = "Demo";
 }
-
 <h2>Demo</h2>
 @(Html.Kendo().Upload().Name("Upload").Messages(msg => msg.Cancel("Cancel"))
 )
+<br />
+@(Html.Kendo().PercentTextBox().Name("dd").Max(100).Step(2))
+
+
+<div id="forecast">
+    @(Html.Kendo().TabStrip()
+          .Name("tabstrip")
+          .Items(tabstrip =>
+          {
+              tabstrip.Add().Text("Paris").ImageUrl(Url.Content("~/Content/kendo/16x16/Chart.png"))
+                  .Selected(true)
+                  .Content(@<text>
+        <div class="weather">
+            <h2>17<span>&ordm;C</span></h2>
+            <p>Rainy weather in Paris.</p>
+        </div>
+        <span class="rainy">&nbsp;</span>
+                </text>);
+
+              tabstrip.Add().Text("New York")
+                  .Content(@<text>
+        <div class="weather">
+            <h2>29<span>&ordm;C</span></h2>
+            <p>Sunny weather in New York.</p>
+        </div>
+        <span class="sunny">&nbsp;</span>
+                </text>);
+
+              tabstrip.Add().Text("Moscow")
+                  .Content(@<text>
+        <div class="weather">
+            <h2>16<span>&ordm;C</span></h2>
+            <p>Cloudy weather in Moscow.</p>
+        </div>
+        <span class="cloudy">&nbsp;</span>
+                </text>);
+
+              tabstrip.Add().Text("Sydney")
+                  .Content(@<text>
+        <div class="weather">
+            <h2>17<span>&ordm;C</span></h2>
+            <p>Rainy weather in Sidney.</p>
+        </div>
+        <span class="rainy">&nbsp;</span>
+                </text>);
+          })
+    )
+    <br />
+    @(Html.Kendo().TabStrip().Name("dddd").Items(trip =>
+{
+trip.Add().Text("Tab1").Selected(true).Content(@<text>
+        我是tab1;
+</text>);
+    trip.Add().Text("Tab2").Content(@<text>我是Tab22222</text>);
+}))
+</div>
+
+
+<div id="tshirt-view" class="k-header">
+    <h2>Customize your Kendo T-shirt</h2>
+    <div id="options">
+        <h3>T-shirt Fabric</h3>
+        @(Html.Kendo().ComboBox()
+          .Name("fabric")
+          .Filter("contains")
+          .Placeholder("Select fabric...")
+          .DataTextField("Text")
+          .DataValueField("Value")
+          .BindTo(ViewBag.slist)
+          .SelectedIndex(3)
+          .Suggest(true)
+        )
+
+        <h3>T-shirt Size</h3>
+        @(Html.Kendo().ComboBox()
+          .Name("size")
+          .Placeholder("Select size...")
+          .BindTo(new List<string>() {
+              "X-Small",
+              "Small",
+              "Medium",
+              "Large",
+              "X-Large",
+              "2X-Large"
+          })
+          .SelectedIndex(3)
+          .Suggest(true)
+        )
+        <br />
+        <button class="k-button" id="get">Customize</button>
+        @(Html.Kendo().ComboBox()
+        .Name("parentP")
+         .DataTextField("Text")
+          .DataValueField("Value")
+          .BindTo(new List<SelectListItem>() {
+              new SelectListItem() {
+                Text = "jd", Value = "1"
+              },
+              new SelectListItem() {
+                Text = "ta", Value = "2"
+              }
+          })
+          .SelectedIndex(3)
+          .Suggest(true))
+
+
+        <br />
+        @(Html.Kendo().TreeView()
+        .Name("treeview")
+        .Items(treeview =>
+        {
+            treeview.Add().Text("My Web Site")
+                .SpriteCssClasses("folder")
+                .Expanded(true)
+                .Items(root =>
+                {
+                    root.Add().Text("images")
+                        .Expanded(true)
+                        .SpriteCssClasses("folder")
+                        .Items(images =>
+                        {
+                            images.Add().Text("logo.png")
+                                .SpriteCssClasses("image");
+
+                            images.Add().Text("body-back.png")
+                                .SpriteCssClasses("image");
+
+                            images.Add().Text("my-photo.jpg")
+                                .SpriteCssClasses("image");
+                        });
+
+                    root.Add().Text("resources")
+                        .Expanded(false)
+                        .SpriteCssClasses("folder")
+                        .Items(resources =>
+                        {
+                            resources.Add().Text("pdf")
+                                .Expanded(false)
+                                .SpriteCssClasses("folder")
+                                .Items(pdf =>
+                                {
+                                    pdf.Add().Text("brochure.pdf")
+                                        .SpriteCssClasses("pdf");
+
+                                    pdf.Add().Text("prices.pdf")
+                                        .SpriteCssClasses("pdf");
+                                });
+
+                            resources.Add().Text("zip")
+                                .SpriteCssClasses("folder");
+                        });
+
+                    root.Add().Text("about.html")
+                        .SpriteCssClasses("html");
+
+                    root.Add().Text("contacts.html")
+                        .SpriteCssClasses("html");
+
+                    root.Add().Text("index.html")
+                        .SpriteCssClasses("html");
+
+                    root.Add().Text("portfolio.html")
+                        .SpriteCssClasses("html");
+                });
+        })
+        )
+
+        <br />
+    </div>
+</div>
+
+<style>
+    #example h2 {
+        font-weight: normal;
+    }
+
+    #tshirt-view {
+        border-radius: 10px 10px 10px 10px;
+        border-style: solid;
+        border-width: 1px;
+        overflow: hidden;
+        width: 500px;
+        margin: 30px auto;
+        padding: 20px 20px 0 20px;
+    }
+
+    #tshirt {
+        float: left;
+        margin: 30px 40px 30px 20px;
+    }
+
+    #options {
+        padding: 30px;
+    }
+
+        #options h3 {
+            font-size: 1em;
+            font-weight: bold;
+            margin: 25px 0 8px 0;
+        }
+
+    #get {
+        margin-top: 25px;
+    }
+
+    .k-readonly {
+        color: gray;
+    }
+</style>
+
+<script>
+    $(document).ready(function () {
+        var fabric = $("#fabric").data("kendoComboBox");
+        var size = $("#size").data("kendoComboBox");
+
+        $("#get").click(function () {
+            alert('Thank you! Your Choice is:\n\nFabric ID: ' + fabric.text() + ' and Size: ' + size.value());
+        });
+    });
+</script>
